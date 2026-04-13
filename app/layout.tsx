@@ -7,7 +7,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Carlos Mendoza | Backend Engineer',
+  title: 'Jimmis J Simanca | Backend Engineer',
   description: 'Senior Backend Engineer especializado en Java, Spring Boot y arquitecturas de microservicios',
   generator: 'v0.app',
   icons: {
@@ -36,7 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark bg-background">
-      <body className="font-sans antialiased bg-background text-foreground">
+      <body className="font-sans antialiased bg-zinc-950 text-foreground">
+        {/* Grainy Texture Overlay */}
+        <div className="noise-overlay" aria-hidden="true" />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

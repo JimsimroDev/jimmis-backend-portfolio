@@ -16,7 +16,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setScrolled(window.scrollY > 50)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
@@ -24,9 +24,9 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-zinc-950/60 backdrop-blur-md border-b border-white/10 shadow-[0_4px_30px_rgba(127,0,113,0.1)]"
+          ? "bg-zinc-950/70 backdrop-blur-md border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
           : "bg-transparent"
       }`}
     >
@@ -34,9 +34,9 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <a
             href="#inicio"
-            className="text-xl font-bold text-white hover:text-[rgb(127,0,113)] transition-colors"
+            className="text-xl font-bold text-white hover:text-[rgb(180,100,160)] transition-colors duration-300"
           >
-            {"<CM />"}
+            {"<JJS />"}
           </a>
 
           {/* Desktop Navigation */}
@@ -45,10 +45,10 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-zinc-400 hover:text-white transition-colors relative group"
+                className="text-zinc-400 hover:text-white transition-colors duration-300 relative group text-sm tracking-wide"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[rgb(127,0,113)] transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[rgb(127,0,113)] to-[rgb(180,80,160)] transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </div>
@@ -56,7 +56,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 hover:bg-white/5 rounded-lg transition-colors"
             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -65,13 +65,13 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 bg-zinc-900/80 backdrop-blur-xl rounded-xl border border-white/10 p-4">
+          <div className="md:hidden mt-4 pb-4 backdrop-blur-xl bg-zinc-900/90 rounded-xl border border-white/10 p-4">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block py-3 text-zinc-400 hover:text-white transition-colors"
+                className="block py-3 text-zinc-400 hover:text-white transition-colors border-b border-white/5 last:border-0"
               >
                 {link.label}
               </a>
