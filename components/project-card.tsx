@@ -18,12 +18,14 @@ export function ProjectCard({
   liveUrl,
 }: ProjectCardProps) {
   return (
-    <div className="group relative">
+    <div 
+      className="group relative [perspective:1000px]"
+    >
       {/* Glow Effect Behind Card */}
-      <div className="absolute -inset-1 bg-[rgb(127,0,113)] rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-all duration-500" />
+      <div className="absolute -inset-2 bg-[rgb(127,0,113)] rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-all duration-500 group-hover:drop-shadow-[0_0_25px_rgba(127,0,113,0.5)]" />
       
-      {/* Card */}
-      <div className="relative bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:border-[rgb(127,0,113)]/60 hover:bg-zinc-900/60">
+      {/* Card with 3D Transform */}
+      <div className="relative bg-zinc-950/60 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:rotateX(5deg)_rotateY(-5deg)_scale(1.02)] group-hover:shadow-[0_25px_50px_-12px_rgba(127,0,113,0.4)] group-hover:border-[rgb(127,0,113)]/60 group-hover:bg-zinc-900/70">
         {/* Gradient Line Top */}
         <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[rgb(127,0,113)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         

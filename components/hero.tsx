@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
+import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react"
 
 export function Hero() {
   return (
@@ -19,8 +19,8 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(127,0,113,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(127,0,113,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Glass Card */}
-        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+        {/* Glass Card with enhanced glassmorphism */}
+        <div className="bg-zinc-950/60 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[rgb(127,0,113)]/20 border border-[rgb(127,0,113)]/30 rounded-full text-[rgb(127,0,113)] text-sm mb-6">
             <span className="w-2 h-2 bg-[rgb(127,0,113)] rounded-full animate-pulse" />
             Disponible para nuevos proyectos
@@ -71,14 +71,26 @@ export function Hero() {
             </a>
           </div>
 
-          {/* CTA Button */}
-          <a
-            href="#proyectos"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[rgb(127,0,113)] hover:bg-[rgb(150,20,130)] text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(127,0,113,0.5)] hover:scale-105"
-          >
-            Ver mis proyectos
-            <ArrowDown className="w-4 h-4 animate-bounce" />
-          </a>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="#proyectos"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[rgb(127,0,113)] hover:bg-[rgb(150,20,130)] text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(127,0,113,0.5)] hover:scale-105"
+            >
+              Ver mis proyectos
+              <ArrowDown className="w-4 h-4 animate-bounce" />
+            </a>
+            
+            {/* Download CV Button - Glassmorphism Style */}
+            <a
+              href="/cv-carlos-mendoza.pdf"
+              download
+              className="group inline-flex items-center gap-2 px-8 py-4 backdrop-blur-xl bg-white/5 border border-white/20 text-[rgb(180,100,170)] font-semibold rounded-xl transition-all duration-300 hover:bg-white/10 hover:border-[rgb(127,0,113)]/50 hover:shadow-[0_0_25px_rgba(127,0,113,0.3)] hover:scale-105 hover:-translate-y-1"
+            >
+              <Download className="w-5 h-5 transition-transform group-hover:-translate-y-0.5" />
+              Descargar CV
+            </a>
+          </div>
         </div>
       </div>
     </section>

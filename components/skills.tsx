@@ -60,12 +60,12 @@ export function Skills() {
           {skillCategories.map((category) => (
             <div
               key={category.title}
-              className="group relative"
+              className="group relative [perspective:1000px]"
             >
               {/* Glow Effect */}
-              <div className="absolute -inset-1 bg-[rgb(127,0,113)] rounded-2xl blur-lg opacity-0 group-hover:opacity-20 transition-all duration-500" />
+              <div className="absolute -inset-2 bg-[rgb(127,0,113)] rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-all duration-500 group-hover:drop-shadow-[0_0_20px_rgba(127,0,113,0.4)]" />
               
-              <div className="relative bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-[rgb(127,0,113)]/40 transition-all duration-300">
+              <div className="relative bg-zinc-950/60 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:[transform:rotateX(5deg)_rotateY(-5deg)_scale(1.02)] group-hover:shadow-[0_20px_40px_-12px_rgba(127,0,113,0.35)] group-hover:border-[rgb(127,0,113)]/50">
                 <h3 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
                   <span className="w-2 h-2 bg-[rgb(127,0,113)] rounded-full" />
                   {category.title}
