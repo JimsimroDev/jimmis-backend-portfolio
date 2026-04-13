@@ -21,6 +21,23 @@ export function Hero() {
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         {/* Glass Card with enhanced glassmorphism */}
         <div className="bg-zinc-950/60 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+          {/* Profile Photo with Glassmorphism */}
+          <div className="flex justify-center mb-8">
+            <div className="relative group">
+              {/* Purple Glow Behind Photo */}
+              <div className="absolute -inset-3 bg-[rgb(127,0,113)] rounded-full blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+              
+              {/* Glass Container */}
+              <div className="relative p-1.5 backdrop-blur-md bg-white/5 border border-white/10 rounded-full">
+                <img
+                  src="/images/profile.jpg"
+                  alt="Carlos Mendoza - Senior Backend Engineer"
+                  className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover opacity-90 ring-2 ring-[rgb(127,0,113)]/30"
+                />
+              </div>
+            </div>
+          </div>
+
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[rgb(127,0,113)]/20 border border-[rgb(127,0,113)]/30 rounded-full text-[rgb(127,0,113)] text-sm mb-6">
             <span className="w-2 h-2 bg-[rgb(127,0,113)] rounded-full animate-pulse" />
             Disponible para nuevos proyectos
