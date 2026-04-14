@@ -21,7 +21,7 @@ export const projects: Project[] = [
     techStack: ["Java", "Spring Boot", "LangChain4j", "OpenAI", "Render"],
     githubUrl: "https://github.com/JimsimroDev/Hybrid-Intel-Orchestrator",
     demoUrl: "https://orchestrator.jimsimrodev.uk",
-    image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHJvOWJ6Y3AwN2NjOGRvNHo4ZnRydHB3b3B6MXd1OHdyMHB4dXd6biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif",
+    image: "https://res.cloudinary.com/dzngz770f/image/upload/v1776132043/demo_invyqb.gif",
     status: "live",
   },
   {

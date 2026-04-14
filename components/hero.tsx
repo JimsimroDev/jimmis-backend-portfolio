@@ -81,7 +81,7 @@ export function Hero() {
             <Github className="w-5 h-5 text-white" />
           </a>
           <a
-            href="https://linkedin.com/in/jimmis-simanca"
+            href="https://www.linkedin.com/in/jimsimro-dev"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl hover:bg-[rgb(127,0,113)]/20 hover:border-[rgb(127,0,113)]/40 transition-all duration-300 hover:scale-110"
@@ -90,7 +90,7 @@ export function Hero() {
             <Linkedin className="w-5 h-5 text-white" />
           </a>
           <a
-            href="mailto:jimmis@example.com"
+            href="mailto:jhoangd.jgd@gmail.com"
             className="p-3 backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl hover:bg-[rgb(127,0,113)]/20 hover:border-[rgb(127,0,113)]/40 transition-all duration-300 hover:scale-110"
             aria-label="Email"
           >
