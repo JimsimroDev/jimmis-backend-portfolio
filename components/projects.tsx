@@ -5,7 +5,7 @@ import { ProjectCard } from "./project-card"
 
 export function Projects() {
   return (
-    <section id="proyectos" className="relative py-32 px-6">
+    <section id="proyectos" className="relative py-16 px-6">
       <div className="relative z-10 max-w-5xl mx-auto">
         <div className="mb-12">
           <p className="text-xs uppercase tracking-[0.3em] text-zinc-600 font-medium mb-4">
