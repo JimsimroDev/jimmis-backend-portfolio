@@ -1,54 +1,7 @@
 "use client"
 
+import { projects } from "@/lib/projects-data"
 import { ProjectCard } from "./project-card"
-
-const projects = [
-  {
-    title: "API Gateway Microservices",
-    description:
-      "Sistema de gateway centralizado para orquestar más de 50 microservicios con balanceo de carga, circuit breaker y rate limiting. Procesa +100K requests/segundo.",
-    tags: ["Java 21", "Spring Cloud", "Redis", "Kubernetes"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
-  },
-  {
-    title: "Real-Time Payment Processor",
-    description:
-      "Motor de procesamiento de pagos en tiempo real con arquitectura event-driven. Maneja transacciones bancarias con latencia < 50ms y 99.99% uptime.",
-    tags: ["Spring Boot", "Kafka", "PostgreSQL", "Docker"],
-    githubUrl: "https://github.com",
-  },
-  {
-    title: "Distributed Task Scheduler",
-    description:
-      "Sistema distribuido de programación de tareas con soporte para cron jobs, workflows complejos y retry automático. Escala horizontalmente hasta 1M tareas/día.",
-    tags: ["Java", "Quartz", "MongoDB", "RabbitMQ"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
-  },
-  {
-    title: "Authentication Service",
-    description:
-      "Microservicio de autenticación con OAuth2, JWT y MFA. Integración con proveedores externos (Google, GitHub) y sistema de roles granular.",
-    tags: ["Spring Security", "OAuth2", "JWT", "MySQL"],
-    githubUrl: "https://github.com",
-  },
-  {
-    title: "Data Pipeline ETL",
-    description:
-      "Pipeline de procesamiento de datos masivos para analytics. Extrae, transforma y carga +5TB de datos diarios con tolerancia a fallos.",
-    tags: ["Apache Spark", "Java", "Airflow", "AWS S3"],
-    githubUrl: "https://github.com",
-  },
-  {
-    title: "Inventory Management System",
-    description:
-      "Sistema de gestión de inventario en tiempo real para e-commerce. Sincronización multi-warehouse con consistencia eventual y alertas predictivas.",
-    tags: ["Spring Boot", "Elasticsearch", "Redis", "gRPC"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
-  },
-]
 
 export function Projects() {
   return (
@@ -63,14 +16,22 @@ export function Projects() {
             Proyectos Destacados
           </h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
-            Una selección de mis trabajos más relevantes en arquitectura backend
-            y sistemas distribuidos.
+            Una selección de mis trabajos más relevantes en arquitectura backend,
+            orquestación de IA y sistemas distribuidos.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+            <ProjectCard
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              tags={project.techStack}
+              githubUrl={project.githubUrl}
+              liveUrl={project.demoUrl}
+              isComingSoon={project.isComingSoon}
+            />
           ))}
         </div>
       </div>

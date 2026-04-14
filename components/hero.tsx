@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react"
 
 export function Hero() {
@@ -28,13 +29,16 @@ export function Hero() {
           <div className="relative group">
             {/* Purple Aura */}
             <div className="absolute -inset-4 bg-[rgb(127,0,113)] rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-700" />
-            
+
             {/* Glass Container */}
-            <div className="relative p-1 backdrop-blur-md bg-white/5 border border-white/10 rounded-full">
-              <img
+            <div className="relative p-1 backdrop-blur-md bg-white/5 border border-white/10 rounded-full overflow-hidden">
+              <Image
                 src="/images/profile.jpg"
                 alt="Jimmis J Simanca - Senior Backend Engineer"
+                width={128}
+                height={128}
                 className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover"
+                priority
               />
             </div>
           </div>
@@ -48,7 +52,7 @@ export function Hero() {
 
         {/* Giant Name with Gradient */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-tight tracking-tight">
-          Jimmis J{" "}
+          Jimmis J.{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[rgb(200,150,190)] to-[rgb(127,0,113)]">
             Simanca
           </span>
@@ -59,16 +63,16 @@ export function Hero() {
           Senior Backend Engineer
         </p>
 
-        {/* Description */}
-        <p className="text-base md:text-lg text-zinc-300 max-w-xl mx-auto mb-8 leading-relaxed">
+        {/* Description - Higher opacity for readability */}
+        <p className="text-base md:text-lg text-gray-100 max-w-xl mx-auto mb-8 leading-relaxed">
           Especializado en Java, Spring Boot y arquitecturas de microservicios.
-          Construyo sistemas escalables y de alto rendimiento.
+          Experto en orquestación de IA y sistemas escalables.
         </p>
 
         {/* Social Links */}
         <div className="flex items-center justify-center gap-4 mb-8">
           <a
-            href="https://github.com"
+            href="https://github.com/JimsimroDev"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl hover:bg-[rgb(127,0,113)]/20 hover:border-[rgb(127,0,113)]/40 transition-all duration-300 hover:scale-110"
@@ -77,7 +81,7 @@ export function Hero() {
             <Github className="w-5 h-5 text-white" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://linkedin.com/in/jimmis-simanca"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 backdrop-blur-xl bg-white/5 border border-white/10 rounded-xl hover:bg-[rgb(127,0,113)]/20 hover:border-[rgb(127,0,113)]/40 transition-all duration-300 hover:scale-110"
@@ -104,7 +108,7 @@ export function Hero() {
             Ver proyectos
             <ArrowDown className="w-4 h-4 animate-bounce" />
           </a>
-          
+
           {/* Secondary Button - Pure Glass */}
           <a
             href="/cv-jimmis-simanca.pdf"
