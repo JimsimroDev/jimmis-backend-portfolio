@@ -16,8 +16,8 @@ export const projects: Project[] = [
     description:
       "Sistema de orquestación de IA desarrollado en Java. Implementa RAG (Retrieval-Augmented Generation) para procesar documentos PDF y realizar búsquedas web en tiempo real.",
     techStack: ["Java", "Spring Boot", "LangChain4j", "OpenAI", "Render"],
-    githubUrl: "https://github.com/JimsimroDev/ai-orchestrator",
-    demoUrl: "https://ai-orchestrator.onrender.com",
+    githubUrl: "https://github.com/JimsimroDev/Hybrid-Intel-Orchestrator",
+    demoUrl: "https://orchestrator.jimsimrodev.uk",
   },
   {
     id: "microservicios-ha",

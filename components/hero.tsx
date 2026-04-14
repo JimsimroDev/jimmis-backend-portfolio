@@ -24,7 +24,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        {/* Profile Photo with Glass Border and Aura */}
+        {/* perfil.jpgto with Glass Border and Aura */}
         <div className="flex justify-center mb-8">
           <div className="relative group">
             {/* Purple Aura */}
@@ -33,7 +33,7 @@ export function Hero() {
             {/* Glass Container */}
             <div className="relative p-1 backdrop-blur-md bg-white/5 border border-white/10 rounded-full overflow-hidden">
               <Image
-                src="/images/profile.jpg"
+                src="/images/perfil.jpeg"
                 alt="Jimmis J Simanca - Senior Backend Engineer"
                 width={128}
                 height={128}
