@@ -60,7 +60,7 @@ export function Hero() {
         </p>
 
         {/* Description */}
-        <p className="text-base md:text-lg text-zinc-500 max-w-xl mx-auto mb-8 leading-relaxed">
+        <p className="text-base md:text-lg text-zinc-300 max-w-xl mx-auto mb-8 leading-relaxed">
           Especializado en Java, Spring Boot y arquitecturas de microservicios.
           Construyo sistemas escalables y de alto rendimiento.
         </p>
@@ -117,10 +117,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-white/40 rounded-full mt-2 animate-bounce" />
+      {/* Scroll Indicator with Bounce Animation */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+          <div className="w-1 h-2 bg-white/50 rounded-full mt-2" />
         </div>
       </div>
     </section>

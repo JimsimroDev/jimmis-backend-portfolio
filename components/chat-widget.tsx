@@ -12,7 +12,7 @@ interface Message {
 const initialMessages: Message[] = [
   {
     id: 1,
-    text: "¡Hola! Soy el asistente virtual de Carlos. ¿En qué puedo ayudarte?",
+    text: "¡Hola! Soy el asistente virtual de Jimmis. ¿En qué puedo ayudarte?",
     isBot: true,
   },
 ]
@@ -37,9 +37,9 @@ export function ChatWidget() {
     // Simulate bot response
     setTimeout(() => {
       const botResponses = [
-        "¡Gracias por tu interés! Carlos está especializado en arquitecturas backend con Java y Spring Boot.",
-        "Puedes contactar a Carlos directamente en carlos@example.com para discutir tu proyecto.",
-        "Carlos tiene experiencia en microservicios, sistemas distribuidos y procesamiento de datos en tiempo real.",
+        "¡Gracias por tu interés! Jimmis está especializado en arquitecturas backend con Java y Spring Boot.",
+        "Puedes contactar a Jimmis directamente en jimmis@example.com para discutir tu proyecto.",
+        "Jimmis tiene experiencia en microservicios, sistemas distribuidos y procesamiento de datos en tiempo real.",
         "¿Te gustaría ver algún proyecto específico? Puedes explorar la sección de proyectos.",
       ]
 
@@ -76,19 +76,19 @@ export function ChatWidget() {
           
           <div className="relative bg-zinc-900/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
             {/* Header */}
-            <div className="bg-[rgb(127,0,113)] px-4 py-3 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-white/20 rounded-lg">
+            <div className="bg-[rgb(127,0,113)] px-5 py-4 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="p-2.5 bg-white/20 rounded-xl">
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
                   <h3 className="text-white font-semibold text-sm">Asistente IA</h3>
-                  <p className="text-white/70 text-xs">Siempre disponible</p>
+                  <p className="text-white/70 text-xs mt-0.5">Siempre disponible</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-white/20 rounded-lg transition-colors"
+                className="p-2 hover:bg-white/20 rounded-xl transition-colors"
                 aria-label="Cerrar chat"
               >
                 <X className="w-5 h-5 text-white" />
@@ -103,7 +103,7 @@ export function ChatWidget() {
                   className={`flex ${message.isBot ? "justify-start" : "justify-end"}`}
                 >
                   <div
-                    className={`max-w-[80%] px-4 py-2 rounded-2xl text-sm ${
+                    className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                       message.isBot
                         ? "bg-zinc-800/50 text-zinc-300 rounded-bl-sm"
                         : "bg-[rgb(127,0,113)] text-white rounded-br-sm"
