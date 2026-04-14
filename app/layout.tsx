@@ -7,8 +7,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Jimmis J Simanca | Backend Engineer',
-  description: 'Senior Backend Engineer especializado en Java, Spring Boot y arquitecturas de microservicios',
+  title: 'Jimmis J. Simanca | Senior Backend Engineer',
+  description: 'Especialista en Java, Spring Boot y Arquitectura de Microservicios. Experto en orquestación de IA y sistemas escalables.',
   generator: 'v0.app',
   icons: {
     icon: [

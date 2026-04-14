@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { MessageCircle, X, Send, Bot } from "lucide-react"
+import { useState, useRef, useEffect } from "react"
+import { MessageCircle, X, Send, Bot, Loader2 } from "lucide-react"
 
 interface Message {
   id: number
@@ -17,13 +17,23 @@ const initialMessages: Message[] = [
   },
 ]
 
+// CONEXIÓN API: Sustituir este mock por fetch a la API RAG en Render.
+const RAG_API_ENDPOINT = process.env.NEXT_PUBLIC_RAG_API_URL || ""
+
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>(initialMessages)
   const [input, setInput] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const handleSend = () => {
-    if (!input.trim()) return
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages])
+
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return
 
     const userMessage: Message = {
       id: messages.length + 1,
@@ -31,26 +41,58 @@ export function ChatWidget() {
       isBot: false,
     }
 
-    setMessages([...messages, userMessage])
+    setMessages((prev) => [...prev, userMessage])
     setInput("")
+    setIsLoading(true)
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botResponses = [
-        "¡Gracias por tu interés! Jimmis está especializado en arquitecturas backend con Java y Spring Boot.",
-        "Puedes contactar a Jimmis directamente en jimmis@example.com para discutir tu proyecto.",
-        "Jimmis tiene experiencia en microservicios, sistemas distribuidos y procesamiento de datos en tiempo real.",
-        "¿Te gustaría ver algún proyecto específico? Puedes explorar la sección de proyectos.",
-      ]
+    try {
+      // CONEXIÓN API: Sustituir este mock por fetch a la API RAG en Render.
+      if (RAG_API_ENDPOINT) {
+        const response = await fetch(RAG_API_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: input }),
+        })
 
-      const botMessage: Message = {
+        if (!response.ok) throw new Error("API Error")
+
+        const data = await response.json()
+        const botMessage: Message = {
+          id: messages.length + 2,
+          text: data.response || data.message,
+          isBot: true,
+        }
+        setMessages((prev) => [...prev, botMessage])
+      } else {
+        // Mock response when API is not configured
+        await new Promise((resolve) => setTimeout(resolve, 1200))
+
+        const botResponses = [
+          "¡Gracias por tu interés! Jimmis está especializado en arquitecturas backend con Java y Spring Boot.",
+          "Puedes contactar a Jimmis directamente en jimmis@example.com para discutir tu proyecto.",
+          "Jimmis tiene experiencia en microservicios, sistemas distribuidos y orquestación de IA con RAG.",
+          "¿Te gustaría ver algún proyecto específico? Puedes explorar la sección de proyectos.",
+        ]
+
+        const botMessage: Message = {
+          id: messages.length + 2,
+          text: botResponses[Math.floor(Math.random() * botResponses.length)],
+          isBot: true,
+        }
+        setMessages((prev) => [...prev, botMessage])
+      }
+    } catch {
+      const errorMessage: Message = {
         id: messages.length + 2,
-        text: botResponses[Math.floor(Math.random() * botResponses.length)],
+        text: "Lo siento, hubo un problema al procesar tu mensaje. Por favor, intenta de nuevo.",
         isBot: true,
       }
-
-      setMessages((prev) => [...prev, botMessage])
-    }, 1000)
+      setMessages((prev) => [...prev, errorMessage])
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -73,7 +115,7 @@ export function ChatWidget() {
         <div className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)]">
           {/* Glow Effect */}
           <div className="absolute -inset-2 bg-[rgb(127,0,113)] rounded-3xl blur-2xl opacity-30" />
-          
+
           <div className="relative bg-zinc-900/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
             {/* Header */}
             <div className="bg-[rgb(127,0,113)] px-5 py-4 flex items-center justify-between">
@@ -82,8 +124,12 @@ export function ChatWidget() {
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold text-sm">Asistente IA</h3>
-                  <p className="text-white/70 text-xs mt-0.5">Siempre disponible</p>
+                  <h3 className="text-white font-semibold text-sm">
+                    Asistente IA
+                  </h3>
+                  <p className="text-white/70 text-xs mt-0.5">
+                    Siempre disponible
+                  </p>
                 </div>
               </div>
               <button
@@ -113,6 +159,18 @@ export function ChatWidget() {
                   </div>
                 </div>
               ))}
+
+              {/* Loading Indicator */}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="bg-zinc-800/50 text-zinc-400 px-4 py-3 rounded-2xl rounded-bl-sm flex items-center gap-2">
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span className="text-sm">Pensando...</span>
+                  </div>
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Input */}
@@ -123,15 +181,23 @@ export function ChatWidget() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                  placeholder="Escribe tu mensaje..."
-                  className="flex-1 px-4 py-2 bg-zinc-800/50 border border-white/10 rounded-xl text-white text-sm placeholder-zinc-500 focus:outline-none focus:border-[rgb(127,0,113)]/50 transition-colors"
+                  placeholder={
+                    isLoading ? "Esperando respuesta..." : "Escribe tu mensaje..."
+                  }
+                  disabled={isLoading}
+                  className="flex-1 px-4 py-2 bg-zinc-800/50 border border-white/10 rounded-xl text-white text-sm placeholder-zinc-500 focus:outline-none focus:border-[rgb(127,0,113)]/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <button
                   onClick={handleSend}
-                  className="p-2 bg-[rgb(127,0,113)] hover:bg-[rgb(150,20,130)] text-white rounded-xl transition-colors"
+                  disabled={isLoading || !input.trim()}
+                  className="p-2 bg-[rgb(127,0,113)] hover:bg-[rgb(150,20,130)] text-white rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   aria-label="Enviar mensaje"
                 >
-                  <Send className="w-4 h-4" />
+                  {isLoading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
                 </button>
               </div>
             </div>
