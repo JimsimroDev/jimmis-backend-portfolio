@@ -33,7 +33,7 @@ export function Hero() {
             {/* Glass Container */}
             <div className="relative p-1 backdrop-blur-md bg-white/5 border border-white/10 rounded-full overflow-hidden">
               <Image
-                src="/images/perfil.jpeg"
+                src="https://res.cloudinary.com/dzngz770f/image/upload/v1776204216/perfil_pyuewu.jpg"
                 alt="Jimmis J Simanca - Senior Backend Engineer"
                 width={128}
                 height={128}
