@@ -30,6 +30,8 @@ export function Projects() {
               tags={project.techStack}
               githubUrl={project.githubUrl}
               liveUrl={project.demoUrl}
+              image={project.image}
+              status={project.status}
               isComingSoon={project.isComingSoon}
             />
           ))}
