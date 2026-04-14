@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-zinc-950"
+      className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-zinc-950"
     >
       {/* Mesh Gradient Orbs - Animated */}
       <div className="absolute inset-0 overflow-hidden">
