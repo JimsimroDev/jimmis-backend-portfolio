@@ -10,16 +10,16 @@ export function About() {
           </p>
           
           <h2 className="text-2xl md:text-3xl font-medium text-white leading-relaxed">
-            Backend Engineer enfocado en construir{" "}
-            <span className="text-[rgb(180,100,160)]">sistemas escalables</span>{" "}
-            y soluciones de{" "}
-            <span className="text-[rgb(180,100,160)]">inteligencia artificial</span>.
+            Ingeniero de Sistemas en formaci&oacute;n enfocado en{" "}
+            <span className="text-[rgb(180,100,160)]">APIs RESTful escalables</span>{" "}
+            con Java y{" "}
+            <span className="text-[rgb(180,100,160)]">Spring Boot</span>.
           </h2>
           
           <p className="text-zinc-500 text-sm leading-relaxed max-w-2xl">
-            Especializado en Java y Spring Boot, diseño arquitecturas robustas orientadas 
-            a microservicios. Integro soluciones de IA con LangChain4j y OpenAI para crear 
-            sistemas inteligentes que resuelven problemas complejos de manera eficiente.
+            Experto en l&oacute;gica de negocio, persistencia de datos avanzada y automatizaci&oacute;n 
+            con arquitecturas RAG. Comprometido con los est&aacute;ndares de Clean Code 
+            y la eficiencia t&eacute;cnica.
           </p>
         </div>
       </div>

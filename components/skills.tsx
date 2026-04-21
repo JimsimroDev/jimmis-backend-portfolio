@@ -19,8 +19,10 @@ const PostgreSQLIcon = ({ className }: { className?: string }) => (
     className={className} 
     fill="currentColor" 
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
   >
-    <path d="M12.202 0c-.233 0-.46.004-.683.011-3.693.11-6.852 2.723-8.083 6.136-.18.498-.31 1.011-.39 1.536-.073.473-.11 1.026-.11 1.554 0 5.467 4.14 10.038 9.58 10.704.28.035.564.06.851.076.241.013.483.02.727.02 1.353 0 2.646-.221 3.86-.628l-.348-.684c-.696.223-1.432.348-2.198.362-.25.005-.501.007-.753.007a8.536 8.536 0 01-8.527-8.156c-.023-.33-.035-.662-.035-.996 0-.393.017-.783.05-1.168a8.532 8.532 0 017.55-7.697c.211-.023.425-.038.64-.047.218-.01.437-.014.658-.014 4.542 0 8.24 3.55 8.513 8.019.014.237.021.475.021.714 0 .341-.014.678-.04 1.011a8.532 8.532 0 01-3.414 6.36l.487.82c2.726-1.683 4.557-4.706 4.61-8.164.004-.265.006-.53.006-.797 0-.585-.034-1.162-.1-1.728a11.957 11.957 0 00-6.49-9.524A11.905 11.905 0 0012.202 0z"/>
+    <title>PostgreSQL</title>
+    <path d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316C22.0123.9383 20.067.0029 17.7948 0c-1.1672-.0019-2.1939.2312-2.9793.5006-.3709-.0969-.7609-.1726-1.1641-.2188-.9245-.1057-1.8994-.0401-2.8086.2134a10.2866 10.2866 0 0 0-1.5337-.533c-1.9712-.4792-4.2015-.3292-5.7557.7661C1.8443 2.1866.5442 4.5644.1369 7.4201c-.1653 1.1596-.5962 5.0295.2165 7.8566.4306 1.4983 1.2186 2.6539 2.2727 3.3386.6549.4258 1.4204.5851 2.1893.5851.2697 0 .5407-.0215.8054-.0651.4713-.0774.9331-.2193 1.3788-.418.0007.2829.0076.5583.0168.8268.0097.2819.0221.5568.0372.8248.0339.5996.0814 1.1486.1544 1.6337.1296.8631.3365 1.5131.6756 2.1153.3205.5691.7213 1.0404 1.2039 1.4088.4851.3701 1.0402.6391 1.6594.7564.6514.1234 1.3606.1194 2.0823-.0335 1.5551-.3292 3.1336-1.2007 4.0274-3.2681.058.1621.1257.3095.2061.4413.4156.6821 1.1085 1.0357 2.0604 1.0357.3039 0 .6294-.0397.9745-.1154 1.4703-.3221 2.5665-.9628 3.1663-1.8517.4016-.5952.5459-1.2656.4247-1.9682-.1219-.706-.4479-1.3725-.8854-1.4918a.6587.6587 0 0 0-.1651-.0214.5044.5044 0 0 0-.1766.033c.0061.2518.0008.4592-.0161.6233-.0172.1663-.0457.3014-.0858.4144-.0193.0544-.037.1079-.0547.1613l-.0094.0289c-.0096.0287-.0191.0574-.0292.086-.022.0628-.0446.1258-.0727.1993-.0282.0734-.0618.1571-.1046.2598-.0428.1027-.0948.2235-.1651.3783-.0703.1549-.1601.3459-.279.5918-.2202.4555-.3687.7749-.4488.9488a2.1426 2.1426 0 0 0-.1166.2852c.0015.0057.0015.0099.0028.0142-.1924.4048-.5765.7394-1.0983.9477-.5066.2023-1.1058.3126-1.6989.3126-.4011 0-.7876-.0505-1.1365-.1584-.2573-.0797-.4882-.1895-.6853-.3329.0282-.1549.0604-.3205.0978-.5024.1262-.6134.2833-1.4188.4612-2.6133.1779-1.1945.3816-2.7812.6025-4.7758.138-1.248.2567-2.3378.3559-3.2885.0992-.9506.1806-1.7666.2441-2.4655.0633-.6989.1085-1.2827.1377-1.7626.0285-.48.0407-.8634.0357-1.1564-.0048-.293-.0266-.4973-.0654-.6144-.0388-.117-.1003-.1792-.1844-.1792-.0826 0-.1917.0607-.3295.1834-.1379.1227-.2971.2949-.4788.5182-.182.2234-.3864.4976-.6128.8216-.2264.3241-.4709.6988-.7329 1.1242-.2619.4254-.5373.8999-.8292 1.4214-.4982.8903-1.0245 1.8748-1.5804 2.948-.5559 1.0732-1.1266 2.2066-1.7174 3.3969-.0866.1743-.1816.3653-.2867.5728a35.1547 35.1547 0 0 1-.1996-.6215c-.2044-.6715-.4081-1.4161-.6095-2.2282-.2015-.8121-.4017-1.6913-.5991-2.6327-.1972-.9414-.3928-1.9439-.5856-3.0044-.1926-1.0605-.3839-2.1773-.5722-3.3476-.0688-.4272-.1301-.8346-.184-1.2225-.0538-.388-.0991-.7572-.1373-1.1088-.0376-.3516-.067-.6867-.0888-1.0053-.0219-.3187-.0345-.6223-.0389-.9108-.0044-.2886.0007-.5631.0152-.8241.0146-.261.0392-.509.0738-.7441a4.9792 4.9792 0 0 1 .1236-.6428c.0518-.1994.1152-.3887.1902-.5677.0751-.179.1621-.3467.261-.503.099-.1563.2099-.3004.3325-.4324a2.8688 2.8688 0 0 1 .4159-.3503c.1507-.1074.3132-.2017.4873-.2831a3.856 3.856 0 0 1 .5725-.2035c.2023-.0547.4156-.0947.6398-.1201a5.7822 5.7822 0 0 1 .7136-.0366 7.074 7.074 0 0 1 .7943.0427c.2737.0335.5565.0835.8461.1506.2897.067.5836.1505.8789.2502.2953.0996.5889.2144.8779.3439.2891.1295.5706.273.8421.4301.2716.1572.5304.3274.7739.5103.2434.1829.4691.3777.676.5841.2069.2063.3936.4228.5588.6491a5.4217 5.4217 0 0 1 .4297.6892c.1231.233.2259.4719.3071.717a4.6648 4.6648 0 0 1 .1894.7544c.0421.2593.0658.5244.0696.7952.0038.2708-.0121.5459-.0479.8258-.0357.2799-.0909.5616-.1648.8451-.0739.2835-.1669.5667-.2784.8488-.1115.2821-.2421.5603-.3903.8339-.148.2736-.3144.5403-.4985.7993-.1838.259-.3858.5078-.6055.745-.2197.2372-.4567.4612-.7107.6714-.2541.2101-.5254.4042-.8135.5812-.288.177-.5929.3346-.9148.4728a8.7888 8.7888 0 0 1-1.0211.3733c-.3571.1074-.7292.1881-1.1173.2418-.3878.0537-.7895.0798-1.2049.0795a9.8507 9.8507 0 0 1-1.3009-.0857c-.4373-.0624-.8716-.1571-1.3019-.2826-.4303-.1256-.8551-.2816-1.2733-.4677-.4179-.186-.8271-.4018-1.2251-.6465a11.213 11.213 0 0 1-1.153-.8188c-.3668-.2929-.7168-.6117-1.0495-.9559-.3327-.3442-.6467-.7117-.9407-1.1028-.294-.3911-.5674-.8034-.8187-1.2369-.2513-.4335-.48-.8858-.6856-1.3576-.2056-.4717-.3872-.9603-.5434-1.4662a14.7882 14.7882 0 0 1-.3797-1.5919c-.0931-.5452-.1611-1.1055-.2025-1.6814-.0414-.5759-.0561-1.1654-.0445-1.7686.0116-.6031.05-1.2179.1143-1.8447.0644-.6268.1558-1.2638.2738-1.911.1179-.6472.2632-1.3024.4348-1.9666.1716-.6642.3703-1.3349.5958-2.0131a30.0663 30.0663 0 0 1 .7471-1.9948"/>
   </svg>
 );
 
@@ -54,53 +56,80 @@ const OpenAIIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
-const skills = [
-  { name: "Java", icon: JavaIcon, description: "Lenguaje principal" },
-  { name: "Spring Boot", icon: SpringBootIcon, description: "Framework" },
-  { name: "PostgreSQL", icon: PostgreSQLIcon, description: "Base de datos" },
-  { name: "Docker", icon: DockerIcon, description: "Contenedores" },
-  { name: "Git/GitHub", icon: GitHubIcon, description: "Control de versiones" },
-  { name: "Render", icon: RenderIcon, description: "Despliegue" },
-  { name: "LangChain4j", icon: LangChainIcon, description: "IA/RAG" },
-  { name: "OpenAI", icon: OpenAIIcon, description: "IA/RAG" },
+const skillCategories = [
+  {
+    category: "Backend",
+    skills: [
+      { name: "Java", icon: JavaIcon, description: "Lenguaje principal" },
+      { name: "Spring Boot", icon: SpringBootIcon, description: "Framework" },
+      { name: "PostgreSQL", icon: PostgreSQLIcon, description: "Base de datos" },
+    ]
+  },
+  {
+    category: "DevOps & Tools",
+    skills: [
+      { name: "Docker", icon: DockerIcon, description: "Contenedores" },
+      { name: "Git/GitHub", icon: GitHubIcon, description: "Control de versiones" },
+      { name: "Render", icon: RenderIcon, description: "Despliegue" },
+    ]
+  },
+  {
+    category: "IA & RAG",
+    skills: [
+      { name: "LangChain4j", icon: LangChainIcon, description: "Orquestaci\u00f3n IA" },
+      { name: "OpenAI", icon: OpenAIIcon, description: "Modelos LLM" },
+    ]
+  }
 ]
 
 export function Skills() {
+  let globalIndex = 0
+  
   return (
     <section id="habilidades" className="relative py-16 px-6">
       <div className="relative z-10 max-w-4xl mx-auto">
         <div className="mb-10">
           <p className="text-xs uppercase tracking-[0.3em] text-zinc-600 font-medium mb-4">
-            Stack Técnico
+            Stack T&eacute;cnico
           </p>
           <h2 className="text-xl md:text-2xl font-medium text-white">
-            Tecnologías Backend
+            Tecnolog&iacute;as Backend
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {skills.map((skill, index) => {
-            const Icon = skill.icon
-            return (
-              <div
-                key={skill.name}
-                className="group relative animate-fade-in-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="absolute -inset-1 bg-[rgb(127,0,113)] rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-all duration-500" />
-                
-                <div className="relative flex flex-col items-center justify-center p-5 bg-zinc-900/30 backdrop-blur-sm border border-white/5 rounded-xl hover:border-[rgb(127,0,113)]/40 transition-all duration-300 h-full group-hover:bg-zinc-900/50">
-                  <Icon className="w-8 h-8 text-zinc-400 group-hover:text-[rgb(180,100,160)] transition-colors duration-300 mb-3" />
-                  <h3 className="text-sm font-medium text-white text-center">
-                    {skill.name}
-                  </h3>
-                  <p className="text-[10px] text-zinc-500 mt-1 text-center">
-                    {skill.description}
-                  </p>
-                </div>
+        <div className="space-y-8">
+          {skillCategories.map((category) => (
+            <div key={category.category}>
+              <h3 className="text-xs uppercase tracking-[0.2em] text-[rgb(180,100,160)] font-medium mb-4">
+                {category.category}
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {category.skills.map((skill) => {
+                  const Icon = skill.icon
+                  const currentIndex = globalIndex++
+                  return (
+                    <div
+                      key={skill.name}
+                      className="group relative animate-fade-in-up"
+                      style={{ animationDelay: `${currentIndex * 100}ms` }}
+                    >
+                      <div className="absolute -inset-1 bg-[rgb(127,0,113)] rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-all duration-500" />
+                      
+                      <div className="relative flex flex-col items-center justify-center p-5 bg-zinc-900/30 backdrop-blur-sm border border-white/5 rounded-xl hover:border-[rgb(127,0,113)]/40 transition-all duration-300 h-full group-hover:bg-zinc-900/50">
+                        <Icon className="w-8 h-8 text-zinc-400 group-hover:text-[rgb(180,100,160)] transition-colors duration-300 mb-3" />
+                        <h4 className="text-sm font-medium text-white text-center">
+                          {skill.name}
+                        </h4>
+                        <p className="text-[10px] text-zinc-500 mt-1 text-center">
+                          {skill.description}
+                        </p>
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
-            )
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
