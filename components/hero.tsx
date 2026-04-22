@@ -121,8 +121,9 @@ export function Hero() {
 
           {/* Secondary Button - Pure Glass */}
           <a
-            href="/cv-jimmis-simanca.pdf"
-            download
+            href="/cv/micv.pdf"
+            download="CV_Jimmis_Simanca.pdf"
+            target="_blank"
             className="inline-flex items-center gap-2 px-8 py-4 backdrop-blur-xl bg-white/5 border border-white/15 text-white font-semibold rounded-xl transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:scale-105"
           >
             <Download className="w-4 h-4" />
