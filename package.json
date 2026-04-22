@@ -1,12 +1,17 @@
 {
   "name": "my-project",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "release": "npm run release:patch",
+    "release:patch": "npm version patch -m \"chore(release): %s\"",
+    "release:minor": "npm version minor -m \"chore(release): %s\"",
+    "release:major": "npm version major -m \"chore(release): %s\"",
+    "release:push": "git push origin main --follow-tags"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
