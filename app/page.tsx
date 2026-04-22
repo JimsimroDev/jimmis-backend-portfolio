@@ -19,8 +19,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <About />
-      <Projects />
       <Skills />
+      <Projects />
       <Contact />
       <Footer />
       <ChatWidget />

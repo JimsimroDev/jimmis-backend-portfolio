@@ -8,15 +8,25 @@ export function Hero() {
     <section
       id="inicio"
       className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-zinc-950"
+      style={{ willChange: 'transform' }}
     >
-      {/* Mesh Gradient Orbs - Animated */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Mesh Gradient Orbs - Animated with smooth opacity transitions */}
+      <div className="absolute inset-0 overflow-hidden bg-zinc-950">
         {/* Top-left orb */}
-        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[rgb(127,0,113)] rounded-full blur-[120px] animate-orb-pulse" />
+        <div 
+          className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-[rgb(127,0,113)] rounded-full blur-[120px] animate-orb-pulse opacity-15 transition-opacity duration-700"
+          style={{ willChange: 'transform, opacity' }}
+        />
         {/* Bottom-right orb */}
-        <div className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] bg-[rgb(127,0,113)] rounded-full blur-[120px] animate-orb-pulse-slower" />
+        <div 
+          className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] bg-[rgb(127,0,113)] rounded-full blur-[120px] animate-orb-pulse-slower opacity-15 transition-opacity duration-700"
+          style={{ willChange: 'transform, opacity' }}
+        />
         {/* Center subtle orb */}
-        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-[rgb(127,0,113)] rounded-full blur-[180px] animate-orb-pulse-slow" />
+        <div 
+          className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-[rgb(127,0,113)] rounded-full blur-[180px] animate-orb-pulse-slow opacity-10 transition-opacity duration-700"
+          style={{ willChange: 'transform, opacity' }}
+        />
       </div>
 
       {/* Subtle Grid Pattern */}
@@ -34,7 +44,7 @@ export function Hero() {
             <div className="relative p-1 backdrop-blur-md bg-white/5 border border-white/10 rounded-full overflow-hidden">
               <Image
                 src="https://res.cloudinary.com/dzngz770f/image/upload/v1776204216/perfil_pyuewu.jpg"
-                alt="Jimmis J Simanca - Senior Backend Engineer"
+                alt="Jimmis J Simanca - Backend Engineer | Java Specialist"
                 width={128}
                 height={128}
                 className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover"
@@ -60,13 +70,13 @@ export function Hero() {
 
         {/* Role with Letter Spacing */}
         <p className="text-lg md:text-xl text-zinc-400 mb-3 font-light tracking-widest uppercase">
-          Senior Backend Engineer
+          Backend Engineer | Java Specialist
         </p>
 
         {/* Description - Higher opacity for readability */}
         <p className="text-base md:text-lg text-gray-100 max-w-xl mx-auto mb-8 leading-relaxed">
-          Especializado en Java, Spring Boot y arquitecturas de microservicios.
-          Experto en orquestación de IA y sistemas escalables.
+          Desarrollo de APIs RESTful escalables con Java y Spring Boot.
+          Experto en arquitecturas RAG y Clean Code.
         </p>
 
         {/* Social Links */}
