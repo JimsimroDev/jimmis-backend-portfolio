@@ -113,16 +113,16 @@ export function ProjectCard({
 
       {/* Card with Dynamic 3D Transform - Compact & Elegant */}
       <motion.div
-        className="relative h-full bg-zinc-950/50 backdrop-blur-sm border border-white/5 rounded-xl overflow-hidden flex flex-col transition-all duration-300 ease-out min-h-full"
+        className="relative h-full bg-zinc-950/60 backdrop-blur-sm border border-white/[0.06] rounded-lg overflow-hidden flex flex-col transition-all duration-300 ease-out min-h-full"
         style={{
           rotateX: rotateXSpring,
           rotateY: rotateYSpring,
           scale: isHovering ? 1.01 : 1,
           transformStyle: "preserve-3d",
           boxShadow: isHovering
-            ? "0 15px 40px -10px rgba(127, 0, 113, 0.3), 0 0 30px rgba(127, 0, 113, 0.1)"
+            ? "0 12px 30px -10px rgba(127, 0, 113, 0.25), 0 0 20px rgba(127, 0, 113, 0.08)"
             : "none",
-          borderColor: isHovering ? "rgba(127, 0, 113, 0.4)" : "rgba(255, 255, 255, 0.05)",
+          borderColor: isHovering ? "rgba(127, 0, 113, 0.3)" : "rgba(255, 255, 255, 0.06)",
         }}
       >
         {/* Inner Glow Reflection */}
@@ -143,7 +143,7 @@ export function ProjectCard({
         {/* Image/GIF Container - Compact with subtle aspect ratio */}
         {image && (
           <div className="relative w-full overflow-hidden border-b border-white/5">
-            <div className="aspect-[16/10] w-full overflow-hidden">
+            <div className="aspect-[16/9] w-full overflow-hidden">
               <img
                 src={image}
                 alt={title}
@@ -154,7 +154,7 @@ export function ProjectCard({
             {/* Status Badge - Minimal */}
             {status && (
               <div
-                className={`absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm border border-white/5 ${statusConfig[status].bgColor} ${statusConfig[status].textColor}`}
+                className={`absolute top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-light uppercase tracking-wider backdrop-blur-sm border border-white/5 ${statusConfig[status].bgColor} ${statusConfig[status].textColor}`}
               >
                 {statusConfig[status].label}
               </div>
@@ -164,7 +164,7 @@ export function ProjectCard({
 
         {/* Content Section - Compact with subtle 3D floating effect */}
         <div
-          className="p-4 flex flex-col flex-grow relative z-10 transition-transform duration-300"
+          className="p-3 flex flex-col flex-grow relative z-10 transition-transform duration-300"
           style={{
             transform: isHovering ? "translateZ(20px)" : "translateZ(0px)",
           }}
@@ -183,7 +183,7 @@ export function ProjectCard({
           )}
 
           <h3
-            className="text-sm font-semibold text-white mb-2 group-hover:text-[rgb(180,100,160)] transition-all duration-300"
+            className="text-sm font-medium text-white mb-1.5 group-hover:text-[rgb(180,100,160)] transition-all duration-300 tracking-tight"
             style={{
               transform: isHovering ? "translateZ(25px)" : "translateZ(0px)",
             }}
@@ -192,7 +192,7 @@ export function ProjectCard({
           </h3>
 
           <p
-            className="text-zinc-500 mb-3 text-xs leading-relaxed flex-grow line-clamp-3 transition-transform duration-300"
+            className="text-zinc-500 mb-3 text-[11px] leading-relaxed font-light flex-grow line-clamp-2 transition-transform duration-300"
             style={{
               transform: isHovering ? "translateZ(15px)" : "translateZ(0px)",
             }}
@@ -229,10 +229,10 @@ export function ProjectCard({
                     key={tag}
                     data-skill-tag={tag}
                     className={
-                      "inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-medium rounded transition-colors duration-300 " +
+                      "inline-flex items-center gap-1 px-1.5 py-0.5 text-[9px] font-light rounded transition-colors duration-300 " +
                       (isActive
                         ? "bg-[rgb(127,0,113)]/10 text-zinc-200 border border-[rgb(127,0,113)]/30"
-                        : "bg-zinc-800/50 text-zinc-400 hover:text-zinc-300")
+                        : "bg-zinc-900/60 text-zinc-500 border border-white/[0.04] hover:text-zinc-300")
                     }
                   >
                     {/* Anchor dot inside tag (always present for measurement) */}
@@ -244,7 +244,7 @@ export function ProjectCard({
                       <span
                         data-skill-dot
                         className={
-                          "block size-2.5 rounded-full transition-colors duration-300 " +
+                          "block size-2 rounded-full transition-colors duration-300 " +
                           (isActive ? "bg-[rgb(127,0,113)]" : "bg-zinc-700")
                         }
                       />
@@ -256,7 +256,7 @@ export function ProjectCard({
             })()}
 
             {tags.length > 3 && (
-              <span className="px-2 py-0.5 text-[10px] text-zinc-600">
+              <span className="px-1.5 py-0.5 text-[9px] text-zinc-600 font-light">
                 +{tags.length - 3}
               </span>
             )}
@@ -264,7 +264,7 @@ export function ProjectCard({
 
           {/* Links - Minimal */}
           <div
-            className="flex items-center gap-3 pt-3 border-t border-white/5 mt-auto transition-transform duration-300"
+            className="flex items-center gap-3 pt-2.5 border-t border-white/[0.04] mt-auto transition-transform duration-300"
             style={{
               transform: isHovering ? "translateZ(18px)" : "translateZ(0px)",
             }}
@@ -274,9 +274,9 @@ export function ProjectCard({
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-white transition-colors"
+                className="flex items-center gap-1 text-[10px] font-light text-zinc-500 hover:text-white transition-colors"
               >
-                <Github className="w-3.5 h-3.5" />
+                <Github className="w-3 h-3" />
                 Código
               </a>
             )}
@@ -285,14 +285,14 @@ export function ProjectCard({
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-[rgb(180,100,160)] transition-colors"
+                className="flex items-center gap-1 text-[10px] font-light text-zinc-500 hover:text-[rgb(180,100,160)] transition-colors"
               >
-                <ExternalLink className="w-3.5 h-3.5" />
+                <ExternalLink className="w-3 h-3" />
                 Demo
               </a>
             )}
             {isComingSoon && (
-              <span className="text-xs text-zinc-600">
+              <span className="text-[10px] font-light text-zinc-600">
                 En desarrollo...
               </span>
             )}

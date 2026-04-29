@@ -176,7 +176,7 @@ export function Projects() {
           x: center.x - sourceCenter.x,
           y: center.y - sourceCenter.y,
         },
-        delayMs: i * 40,
+        delayMs: i * 70,
       }
     })
   }
@@ -198,7 +198,7 @@ export function Projects() {
 
     // Track destinations briefly while the project grid reorders
     const start = performance.now()
-    const trackMs = 450
+    const trackMs = 750
     let rafId: number | null = null
 
     const tick = () => {
@@ -224,7 +224,7 @@ export function Projects() {
 
     // Auto-clear after the flight + fade completes
     const maxDelayMs = Math.max(0, ...computeFlights(activeSkill, layerId).map((f) => f.delayMs))
-    const totalMs = 700 + maxDelayMs
+    const totalMs = 1300 + maxDelayMs
     const timeoutId = window.setTimeout(() => {
       setCloneLayer((prev) => {
         if (!prev || prev.id !== layerId) return prev
@@ -250,9 +250,9 @@ export function Projects() {
           </h2>
         </div>
 
-        {/* Skills submenu */}
+        {/* Skills submenu - Bento micro-cards */}
         <div className="mb-10">
-          <div className="flex flex-wrap gap-2">
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
             {skills.map((skill) => {
               const isActive = activeSkill === skill
 
@@ -262,14 +262,16 @@ export function Projects() {
                   type="button"
                   onClick={() => setActiveSkill((prev) => (prev === skill ? null : skill))}
                   className={
-                    "group inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition-colors duration-200 " +
+                    "group relative aspect-square rounded-lg border transition-all duration-300 ease-out " +
+                    "flex flex-col items-center justify-center gap-1.5 px-1 " +
                     (isActive
-                      ? "border-[rgb(127,0,113)]/50 bg-[rgb(127,0,113)]/10 text-white"
-                      : "border-white/10 bg-zinc-900/30 text-zinc-400 hover:border-white/20 hover:text-zinc-200")
+                      ? "border-[rgb(127,0,113)]/40 bg-[rgb(127,0,113)]/[0.08]"
+                      : "border-white/[0.06] bg-zinc-900/40 hover:border-white/10 hover:bg-zinc-900/60")
                   }
                   aria-pressed={isActive}
+                  aria-label={`Filtrar por ${skill}`}
                 >
-                  {/* Source dot: used as the spawn point for clone flights */}
+                  {/* Source icon: spawn point for clone flights */}
                   <span
                     ref={(el) => {
                       if (!el) {
@@ -278,22 +280,31 @@ export function Projects() {
                       }
                       pillDotRefs.current.set(skill, el)
                     }}
-                    className="grid size-7 place-items-center rounded-full border border-white/10 bg-zinc-800/30 text-zinc-200 transition-colors duration-200 group-hover:border-white/20"
-                    style={{
-                      background: isActive ? "rgba(127,0,113,0.18)" : "rgba(24,24,27,0.3)",
-                      borderColor: isActive ? "rgba(127,0,113,0.35)" : undefined,
-                    }}
+                    className="grid place-items-center"
                   >
-                    <SkillGlyph label={skill} className={isActive ? "size-4.5 text-[rgb(180,100,160)]" : "size-4.5 text-zinc-400"} />
+                    <SkillGlyph
+                      label={skill}
+                      className={
+                        "size-5 transition-colors duration-300 " +
+                        (isActive ? "text-[rgb(180,100,160)]" : "text-zinc-400 group-hover:text-zinc-200")
+                      }
+                    />
                   </span>
 
-                  <span className="whitespace-nowrap">{skill}</span>
+                  <span
+                    className={
+                      "text-[10px] font-light leading-none tracking-tight text-center transition-colors duration-300 truncate max-w-full " +
+                      (isActive ? "text-white" : "text-zinc-500 group-hover:text-zinc-300")
+                    }
+                  >
+                    {skill}
+                  </span>
                 </button>
               )
             })}
           </div>
 
-          <div className="mt-3 text-xs text-zinc-600">
+          <div className="mt-4 text-[11px] text-zinc-600 font-light">
             {activeSkill ? (
               <span>
                 Filtrando por <span className="text-zinc-400">{activeSkill}</span>. Haz click de nuevo para
@@ -302,10 +313,6 @@ export function Projects() {
             ) : (
               <span>Selecciona una skill para ver proyectos relacionados.</span>
             )}
-          </div>
-
-          <div className="mt-4 text-sm text-zinc-500 max-w-2xl">
-            Enfocado en arquitectura, APIs y sistemas listos para producci&oacute;n.
           </div>
         </div>
 
@@ -331,8 +338,8 @@ export function Projects() {
                     key={flight.key}
                     style={{
                       position: "fixed",
-                      left: sourceCenter.x - 14,
-                      top: sourceCenter.y - 14,
+                      left: sourceCenter.x - 22,
+                      top: sourceCenter.y - 22,
                       willChange: "transform",
                     }}
                     initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
@@ -340,16 +347,19 @@ export function Projects() {
                       x: flight.to.x,
                       y: flight.to.y,
                       opacity: [1, 1, 0],
-                      scale: [1, 1, 0.92],
+                      scale: [1, 1, 0.85],
                     }}
                     transition={{
-                      x: { type: "spring", stiffness: 520, damping: 42, delay: flight.delayMs / 1000 },
-                      y: { type: "spring", stiffness: 520, damping: 42, delay: flight.delayMs / 1000 },
-                      opacity: { duration: 0.45, times: [0, 0.7, 1], delay: flight.delayMs / 1000 },
-                      scale: { duration: 0.45, times: [0, 0.7, 1], delay: flight.delayMs / 1000 },
+                      x: { duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: flight.delayMs / 1000 },
+                      y: { duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: flight.delayMs / 1000 },
+                      opacity: { duration: 0.9, times: [0, 0.75, 1], ease: [0.16, 1, 0.3, 1], delay: flight.delayMs / 1000 },
+                      scale: { duration: 0.9, times: [0, 0.75, 1], ease: [0.16, 1, 0.3, 1], delay: flight.delayMs / 1000 },
                     }}
                   >
-                    <SkillGlyph label={cloneLayer.skill} className="size-6 text-[rgb(180,100,160)]" />
+                    {/* Mini bento card matching the source skill tile */}
+                    <div className="size-11 rounded-lg border border-[rgb(127,0,113)]/40 bg-[rgb(127,0,113)]/[0.12] backdrop-blur-sm grid place-items-center">
+                      <SkillGlyph label={cloneLayer.skill} className="size-5 text-[rgb(180,100,160)]" />
+                    </div>
                   </motion.div>
                 )
               })}
@@ -361,7 +371,8 @@ export function Projects() {
         <motion.div
           ref={gridRef}
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 auto-rows-fr"
+          transition={{ layout: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr"
         >
           {projects.map((project) => {
             const matches = !activeSkill || project.techStack.includes(activeSkill)
@@ -375,7 +386,10 @@ export function Projects() {
                 animate={{
                   opacity: matches ? 1 : 0,
                 }}
-                transition={{ duration: 0.25 }}
+                transition={{
+                  layout: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+                  opacity: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+                }}
                 style={{
                   pointerEvents: matches ? "auto" : "none",
                 }}
