@@ -29,7 +29,7 @@ export const projects: Project[] = [
     title: "Microservicios de Alta Disponibilidad",
     description:
       "Arquitectura de microservicios con balanceo de carga, circuit breaker y service discovery. Diseñado para 99.99% uptime.",
-    techStack: ["Java 21", "Spring Cloud", "Kubernetes", "Redis"],
+    techStack: ["Java", "Spring Cloud", "Kubernetes", "Redis"],
     image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDh0cWxvZ3Bmd2N6aXA4OXI5bzd5NXNxODl0NXFuYmIxNTRiZHJxcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPEqDGUULpEU0aQ/giphy.gif",
     status: "in-progress",
     isComingSoon: true,
