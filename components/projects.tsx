@@ -250,9 +250,9 @@ export function Projects() {
           </h2>
         </div>
 
-        {/* Skills submenu - Bento style */}
+        {/* Skills submenu - Bento micro-cards */}
         <div className="mb-10">
-          <div className="flex flex-wrap gap-1.5">
+          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
             {skills.map((skill) => {
               const isActive = activeSkill === skill
 
@@ -262,14 +262,16 @@ export function Projects() {
                   type="button"
                   onClick={() => setActiveSkill((prev) => (prev === skill ? null : skill))}
                   className={
-                    "group inline-flex items-center gap-1.5 rounded-md border px-2 py-1 text-[11px] font-light transition-all duration-300 ease-out " +
+                    "group relative aspect-square rounded-lg border transition-all duration-300 ease-out " +
+                    "flex flex-col items-center justify-center gap-1.5 px-1 " +
                     (isActive
-                      ? "border-[rgb(127,0,113)]/40 bg-[rgb(127,0,113)]/[0.08] text-white"
-                      : "border-white/5 bg-zinc-950/60 text-zinc-500 hover:border-white/10 hover:text-zinc-300")
+                      ? "border-[rgb(127,0,113)]/40 bg-[rgb(127,0,113)]/[0.08]"
+                      : "border-white/[0.06] bg-zinc-900/40 hover:border-white/10 hover:bg-zinc-900/60")
                   }
                   aria-pressed={isActive}
+                  aria-label={`Filtrar por ${skill}`}
                 >
-                  {/* Source icon: used as the spawn point for clone flights */}
+                  {/* Source icon: spawn point for clone flights */}
                   <span
                     ref={(el) => {
                       if (!el) {
@@ -283,13 +285,20 @@ export function Projects() {
                     <SkillGlyph
                       label={skill}
                       className={
-                        "size-3 transition-colors duration-300 " +
-                        (isActive ? "text-[rgb(180,100,160)]" : "text-zinc-500 group-hover:text-zinc-300")
+                        "size-5 transition-colors duration-300 " +
+                        (isActive ? "text-[rgb(180,100,160)]" : "text-zinc-400 group-hover:text-zinc-200")
                       }
                     />
                   </span>
 
-                  <span className="whitespace-nowrap tracking-wide">{skill}</span>
+                  <span
+                    className={
+                      "text-[10px] font-light leading-none tracking-tight text-center transition-colors duration-300 truncate max-w-full " +
+                      (isActive ? "text-white" : "text-zinc-500 group-hover:text-zinc-300")
+                    }
+                  >
+                    {skill}
+                  </span>
                 </button>
               )
             })}
@@ -304,10 +313,6 @@ export function Projects() {
             ) : (
               <span>Selecciona una skill para ver proyectos relacionados.</span>
             )}
-          </div>
-
-          <div className="mt-3 text-xs text-zinc-500 font-light max-w-2xl">
-            Enfocado en arquitectura, APIs y sistemas listos para producci&oacute;n.
           </div>
         </div>
 
@@ -333,8 +338,8 @@ export function Projects() {
                     key={flight.key}
                     style={{
                       position: "fixed",
-                      left: sourceCenter.x - 14,
-                      top: sourceCenter.y - 14,
+                      left: sourceCenter.x - 22,
+                      top: sourceCenter.y - 22,
                       willChange: "transform",
                     }}
                     initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
@@ -342,7 +347,7 @@ export function Projects() {
                       x: flight.to.x,
                       y: flight.to.y,
                       opacity: [1, 1, 0],
-                      scale: [1, 1, 0.92],
+                      scale: [1, 1, 0.85],
                     }}
                     transition={{
                       x: { duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: flight.delayMs / 1000 },
@@ -351,7 +356,10 @@ export function Projects() {
                       scale: { duration: 0.9, times: [0, 0.75, 1], ease: [0.16, 1, 0.3, 1], delay: flight.delayMs / 1000 },
                     }}
                   >
-                    <SkillGlyph label={cloneLayer.skill} className="size-6 text-[rgb(180,100,160)]" />
+                    {/* Mini bento card matching the source skill tile */}
+                    <div className="size-11 rounded-lg border border-[rgb(127,0,113)]/40 bg-[rgb(127,0,113)]/[0.12] backdrop-blur-sm grid place-items-center">
+                      <SkillGlyph label={cloneLayer.skill} className="size-5 text-[rgb(180,100,160)]" />
+                    </div>
                   </motion.div>
                 )
               })}
