@@ -18,7 +18,7 @@ export function Contact() {
     setStatus("submitting")
 
     try {
-      const response = await fetch("https://formspree.io/f/tu-id-aqui", {
+      const response = await fetch("https://formspree.io/f/xaqarpnk", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export function Contact() {
           {/* Contact Info */}
           <div className="space-y-4">
             <a
-              href="mailto:tu-correo@ejemplo.com"
+              href="mailto:jhoangd.jgd@gmail.com"
               className="group flex items-center gap-3 p-4 bg-zinc-900/30 border border-white/5 rounded-lg hover:border-[rgb(127,0,113)]/30 transition-all duration-300"
             >
               <div className="p-2 bg-zinc-800/50 rounded">
@@ -84,7 +84,7 @@ export function Contact() {
           {/* Contact Form */}
           <form
             onSubmit={handleSubmit}
-            action="https://formspree.io/f/tu-id-aqui"
+            action="https://formspree.io/f/xaqarpnk"
             method="POST"
             className="bg-zinc-900/30 border border-white/5 rounded-lg p-5 space-y-4"
           >
@@ -137,7 +137,7 @@ export function Contact() {
                   setFormData({ ...formData, email: e.target.value })
                 }
                 className="w-full px-3 py-2 bg-zinc-800/30 border border-white/5 rounded-lg text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-[rgb(127,0,113)]/40 transition-all"
-                placeholder="tu@email.com"
+                placeholder="jhoangd.jgd@gmail.com"
                 disabled={status === "submitting"}
               />
             </div>
