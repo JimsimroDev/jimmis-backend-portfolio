@@ -143,7 +143,7 @@ export function ProjectCard({
         {/* Image/GIF Container - Compact with subtle aspect ratio */}
         {image && (
           <div className="relative w-full overflow-hidden border-b border-white/5">
-            <div className="aspect-[16/10] w-full overflow-hidden">
+            <div className="aspect-[16/9] w-full overflow-hidden">
               <img
                 src={image}
                 alt={title}
@@ -154,7 +154,7 @@ export function ProjectCard({
             {/* Status Badge - Minimal */}
             {status && (
               <div
-                className={`absolute top-2 right-2 px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider backdrop-blur-sm border border-white/5 ${statusConfig[status].bgColor} ${statusConfig[status].textColor}`}
+                className={`absolute top-2 right-2 px-1.5 py-0.5 rounded text-[9px] font-light uppercase tracking-wider backdrop-blur-sm border border-white/5 ${statusConfig[status].bgColor} ${statusConfig[status].textColor}`}
               >
                 {statusConfig[status].label}
               </div>
@@ -164,7 +164,7 @@ export function ProjectCard({
 
         {/* Content Section - Compact with subtle 3D floating effect */}
         <div
-          className="p-4 flex flex-col flex-grow relative z-10 transition-transform duration-300"
+          className="p-3.5 flex flex-col flex-grow relative z-10 transition-transform duration-300"
           style={{
             transform: isHovering ? "translateZ(20px)" : "translateZ(0px)",
           }}
@@ -183,7 +183,7 @@ export function ProjectCard({
           )}
 
           <h3
-            className="text-sm font-semibold text-white mb-2 group-hover:text-[rgb(180,100,160)] transition-all duration-300"
+            className="text-sm font-medium text-white mb-1.5 group-hover:text-[rgb(180,100,160)] transition-all duration-300 tracking-tight"
             style={{
               transform: isHovering ? "translateZ(25px)" : "translateZ(0px)",
             }}
@@ -192,7 +192,7 @@ export function ProjectCard({
           </h3>
 
           <p
-            className="text-zinc-500 mb-3 text-xs leading-relaxed flex-grow line-clamp-3 transition-transform duration-300"
+            className="text-zinc-500 mb-3 text-[11px] leading-relaxed font-light flex-grow line-clamp-2 transition-transform duration-300"
             style={{
               transform: isHovering ? "translateZ(15px)" : "translateZ(0px)",
             }}
