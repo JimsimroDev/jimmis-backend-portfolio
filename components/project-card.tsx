@@ -2,6 +2,7 @@
 
 import { ExternalLink, Github, Clock } from "lucide-react"
 import type { ProjectStatus } from "@/lib/projects-data"
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion"
 import { useRef, useState } from "react"
 
 interface ProjectCardProps {
@@ -13,6 +14,8 @@ interface ProjectCardProps {
   image?: string
   status?: ProjectStatus
   isComingSoon?: boolean
+  activeSkill?: string | null
+  renderTagIcon?: (tag: string, opts?: { isActive?: boolean }) => React.ReactNode
 }
 
 const statusConfig: Record<ProjectStatus, { label: string; bgColor: string; textColor: string }> = {
@@ -42,11 +45,23 @@ export function ProjectCard({
   image,
   status,
   isComingSoon = false,
+  activeSkill = null,
+  renderTagIcon,
 }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const [transform, setTransform] = useState({ rotateX: 0, rotateY: 0 })
-  const [glowPosition, setGlowPosition] = useState({ x: 50, y: 50 })
   const [isHovering, setIsHovering] = useState(false)
+
+  // MotionValues: avoid re-rendering on mousemove
+  const rotateX = useMotionValue(0)
+  const rotateY = useMotionValue(0)
+  const glowX = useMotionValue(50)
+  const glowY = useMotionValue(50)
+
+  const rotateXSpring = useSpring(rotateX, { stiffness: 400, damping: 40 })
+  const rotateYSpring = useSpring(rotateY, { stiffness: 400, damping: 40 })
+
+  const outerGlowBg = useMotionTemplate`radial-gradient(circle at ${glowX}% ${glowY}%, rgba(127, 0, 113, 0.5) 0%, rgba(127, 0, 113, 0.2) 40%, transparent 70%)`
+  const innerGlowBg = useMotionTemplate`radial-gradient(circle at ${glowX}% ${glowY}%, rgba(127, 0, 113, 0.15) 0%, transparent 50%)`
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
@@ -58,15 +73,12 @@ export function ProjectCard({
     const centerY = rect.height / 2
 
     // Calculate rotation (more subtle - max 6 degrees for sophisticated feel)
-    const rotateX = ((y - centerY) / centerY) * -6
-    const rotateY = ((x - centerX) / centerX) * 6
+    rotateX.set(((y - centerY) / centerY) * -6)
+    rotateY.set(((x - centerX) / centerX) * 6)
 
     // Calculate glow position as percentage
-    const glowX = (x / rect.width) * 100
-    const glowY = (y / rect.height) * 100
-
-    setTransform({ rotateX, rotateY })
-    setGlowPosition({ x: glowX, y: glowY })
+    glowX.set((x / rect.width) * 100)
+    glowY.set((y / rect.height) * 100)
   }
 
   const handleMouseEnter = () => {
@@ -75,35 +87,37 @@ export function ProjectCard({
 
   const handleMouseLeave = () => {
     setIsHovering(false)
-    setTransform({ rotateX: 0, rotateY: 0 })
-    setGlowPosition({ x: 50, y: 50 })
+    rotateX.set(0)
+    rotateY.set(0)
+    glowX.set(50)
+    glowY.set(50)
   }
 
   return (
-    <div
+    <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative"
+      className="group relative h-full"
       style={{ perspective: "1000px" }}
     >
       {/* Dynamic Glow Effect Behind Card - follows cursor (subtle) */}
-      <div
+      <motion.div
         className="absolute -inset-3 rounded-2xl blur-xl transition-opacity duration-500 pointer-events-none"
         style={{
-          background: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(127, 0, 113, 0.5) 0%, rgba(127, 0, 113, 0.2) 40%, transparent 70%)`,
+          background: outerGlowBg,
           opacity: isHovering ? 0.8 : 0,
         }}
       />
 
       {/* Card with Dynamic 3D Transform - Compact & Elegant */}
-      <div
-        className="relative h-full bg-zinc-950/50 backdrop-blur-sm border border-white/5 rounded-xl overflow-hidden flex flex-col transition-all duration-300 ease-out"
+      <motion.div
+        className="relative h-full bg-zinc-950/50 backdrop-blur-sm border border-white/5 rounded-xl overflow-hidden flex flex-col transition-all duration-300 ease-out min-h-full"
         style={{
-          transform: isHovering
-            ? `rotateX(${transform.rotateX}deg) rotateY(${transform.rotateY}deg) scale(1.01)`
-            : "rotateX(0deg) rotateY(0deg) scale(1)",
+          rotateX: rotateXSpring,
+          rotateY: rotateYSpring,
+          scale: isHovering ? 1.01 : 1,
           transformStyle: "preserve-3d",
           boxShadow: isHovering
             ? "0 15px 40px -10px rgba(127, 0, 113, 0.3), 0 0 30px rgba(127, 0, 113, 0.1)"
@@ -112,10 +126,10 @@ export function ProjectCard({
         }}
       >
         {/* Inner Glow Reflection */}
-        <div
+        <motion.div
           className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-20"
           style={{
-            background: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(127, 0, 113, 0.15) 0%, transparent 50%)`,
+            background: innerGlowBg,
             opacity: isHovering ? 1 : 0,
           }}
         />
@@ -193,14 +207,54 @@ export function ProjectCard({
               transform: isHovering ? "translateZ(20px)" : "translateZ(0px)",
             }}
           >
-            {tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-0.5 text-[10px] font-medium bg-zinc-800/50 text-zinc-400 rounded transition-colors duration-300 hover:text-zinc-300"
-              >
-                {tag}
-              </span>
-            ))}
+            {(() => {
+              const defaultVisible = tags.slice(0, 3)
+              const shouldForce = !!activeSkill && tags.includes(activeSkill)
+              const forcedTag = shouldForce ? activeSkill : null
+
+              const visibleTags = forcedTag
+                ? Array.from(
+                    new Set([
+                      forcedTag,
+                      ...defaultVisible.filter((t) => t !== forcedTag),
+                    ])
+                  ).slice(0, 3)
+                : defaultVisible
+
+              return visibleTags.map((tag) => {
+                const isActive = !!activeSkill && tag === activeSkill
+
+                return (
+                  <span
+                    key={tag}
+                    data-skill-tag={tag}
+                    className={
+                      "inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-medium rounded transition-colors duration-300 " +
+                      (isActive
+                        ? "bg-[rgb(127,0,113)]/10 text-zinc-200 border border-[rgb(127,0,113)]/30"
+                        : "bg-zinc-800/50 text-zinc-400 hover:text-zinc-300")
+                    }
+                  >
+                    {/* Anchor dot inside tag (always present for measurement) */}
+                    {renderTagIcon ? (
+                      <span data-skill-dot className="block">
+                        {renderTagIcon(tag, { isActive })}
+                      </span>
+                    ) : (
+                      <span
+                        data-skill-dot
+                        className={
+                          "block size-2.5 rounded-full transition-colors duration-300 " +
+                          (isActive ? "bg-[rgb(127,0,113)]" : "bg-zinc-700")
+                        }
+                      />
+                    )}
+                    {tag}
+                  </span>
+                )
+              })
+            })()}
+
             {tags.length > 3 && (
               <span className="px-2 py-0.5 text-[10px] text-zinc-600">
                 +{tags.length - 3}
@@ -244,7 +298,7 @@ export function ProjectCard({
             )}
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
